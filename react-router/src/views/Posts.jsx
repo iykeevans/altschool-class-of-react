@@ -8,6 +8,10 @@ const Posts = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    throw new Error("I am an error");
+  }, []);
+
+  useEffect(() => {
     (async () => {
       try {
         const baseurl = "https://jsonplaceholder.typicode.com";
@@ -30,9 +34,15 @@ const Posts = () => {
     navigate(id.toString());
   };
 
+  const triggerError = () => {
+    throw new Error("I am an error");
+  };
+
   return (
     <div>
       <h1>The Posts</h1>
+
+      {/* <button onClick={triggerError}>Trigger Error</button> */}
 
       {isLoading && <Spinner />}
 
